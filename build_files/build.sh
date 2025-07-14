@@ -69,7 +69,11 @@ dnf5 install -y \
 	# xorg-x11-drv-nvidia-cuda \
 	# xorg-x11-drv-nvidia-cuda-libs
 
-dracut -f --regenerate-all
+KERNEL_SUFFIX=""
+
+QUALIFIED_KERNEL="$(rpm -qa | grep -P 'kernel-(|'"$KERNEL_SUFFIX"'-)(\d+\.\d+\.\d+)' | sed -E 's/kernel-(|'"$KERNEL_SUFFIX"'-)//')"
+/usr/bin/dracut --no-hostonly --kver "$QUALIFIED_KERNEL" --reproducible -v --add ostree -f "/lib/modules/$QUALIFIED_KERNEL/initramfs.img"
+chmod 0600 "/lib/modules/$QUALIFIED_KERNEL/initramfs.img"
 
 curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo | \
 	sudo tee /etc/yum.repos.d/nvidia-container-toolkit.repo
