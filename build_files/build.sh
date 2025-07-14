@@ -94,7 +94,7 @@ dnf5 install -y code
 
 
 # Services
-systemctl enable rpm-ostreed-automatic.service
+systemctl enable rpm-ostreed-automatic.timer
 sed -i 's/none/stage/g' /etc/rpm-ostreed.conf
 
 # tee /etc/systemd/system/rpm-ostreed-automatic.timer.d/override.conf << EOF
