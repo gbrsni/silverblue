@@ -52,10 +52,10 @@ dnf5 install -y \
 	zsh
 
 # Media
-dnf5 swap ffmpeg-free ffmpeg --allowerasing
-dnf5 update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
-dnf5 install rpmfusion-free-release-tainted
-dnf5 install libdvdcss
+dnf5 swap -y ffmpeg-free ffmpeg --allowerasing
+dnf5 update -y @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+dnf5 install -y rpmfusion-free-release-tainted
+dnf5 install -y libdvdcss
 
 dnf5 remove -y \
 	gnome-software-rpm-ostree
