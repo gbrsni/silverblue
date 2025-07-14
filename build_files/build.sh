@@ -103,6 +103,7 @@ dnf5 install -y procps-ng curl file
 
 
 # Services
+systemctl enable cockpit.socket
 systemctl enable rpm-ostreed-automatic.timer
 sed -i 's/none/stage/g' /etc/rpm-ostreed.conf
 
