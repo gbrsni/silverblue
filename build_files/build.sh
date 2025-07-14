@@ -43,8 +43,6 @@ dnf5 install -y \
 	python3-ramalama \
 	rclone \
 	restic \
-	rpmfusion-free-release \
-	rpmfusion-nonfree-release \
 	smartmontools \
 	steam-devices \
 	vdpauinfo \
