@@ -34,6 +34,7 @@ dnf5 install -y \
 	gnome-shell-extension-gsconnect \
 	gnome-tweaks \
 	htop \
+	just \
 	langpacks-en_GB \
 	libvirt \
 	libvirt-nss \
