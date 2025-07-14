@@ -74,6 +74,8 @@ curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-contai
 dnf5 install -y \
 	nvidia-container-toolkit
 
+nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
+
 
 # Docker
 curl https://download.docker.com/linux/fedora/docker-ce.repo | tee > /etc/yum.repos.d/docker-ce.repo
