@@ -124,6 +124,8 @@ dnf5 install -y procps-ng curl file
 
 
 # Services
+systemctl enable btrfs-balance.timer
+systemctl enable btrfs-scrub.timer
 systemctl enable cockpit.socket
 systemctl enable rpm-ostreed-automatic.timer
 sed -i 's/none/stage/g' /etc/rpm-ostreed.conf
