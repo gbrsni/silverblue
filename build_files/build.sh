@@ -93,6 +93,12 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 dnf5 install -y code
 
 
+# Brew
+dnf -y --setopt=install_weak_deps=False install gcc
+dnf5 install -y procps-ng curl file
+
+
+
 # Services
 systemctl enable rpm-ostreed-automatic.timer
 sed -i 's/none/stage/g' /etc/rpm-ostreed.conf
