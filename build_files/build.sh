@@ -69,6 +69,8 @@ dnf5 install -y \
 	# xorg-x11-drv-nvidia-cuda \
 	# xorg-x11-drv-nvidia-cuda-libs
 
+dracut -f --regenerate-all
+
 curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo | \
 	sudo tee /etc/yum.repos.d/nvidia-container-toolkit.repo
 
