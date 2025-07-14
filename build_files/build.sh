@@ -87,7 +87,7 @@ curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-contai
 dnf5 install -y \
 	nvidia-container-toolkit
 
-nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
+# nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml # TODO: Make this a service that runs on login
 
 
 # Docker
