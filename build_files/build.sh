@@ -53,7 +53,7 @@ dnf5 install -y \
 
 # Media
 dnf5 swap -y ffmpeg-free ffmpeg --allowerasing
-dnf5 update -y @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+dnf4 update -y @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 dnf5 install -y rpmfusion-free-release-tainted
 dnf5 install -y libdvdcss
 
