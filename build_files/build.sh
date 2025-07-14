@@ -76,6 +76,7 @@ QUALIFIED_KERNEL="$(rpm -qa | grep -P 'kernel-(|'"$KERNEL_SUFFIX"'-)(\d+\.\d+\.\
 chmod 0600 "/lib/modules/$QUALIFIED_KERNEL/initramfs.img"
 
 dnf install -y \
+	-x libva-nvidia-driver.i686 \
 	libva-nvidia-driver \
 	libva-utils \
 	nvidia-vaapi-driver
