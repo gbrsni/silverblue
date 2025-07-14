@@ -24,7 +24,6 @@ dnf5 install -y \
 	btrfsmaintenance \
 	cockpit \
 	cockpit-machines \
-	code \
 	distrobox \
 	ffmpeg \
 	ffmpegthumbnailer \
