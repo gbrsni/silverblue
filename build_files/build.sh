@@ -94,6 +94,19 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 dnf5 install -y code
 
 
+# Services
+systemctl enable rpm-ostreed-automatic.service
+sed -i 's/none/stage/g' /etc/rpm-ostreed.conf
+
+# tee /etc/systemd/system/rpm-ostreed-automatic.timer.d/override.conf << EOF
+# [Timer]
+# OnBootSec=
+# OnUnitInactiveSec=
+# OnCalendar=Mon *-*-* 18:00:00
+# Persistent=true
+# RandomizedDelaySec=15m
+# EOF
+
 
 # Use a COPR Example:
 #
