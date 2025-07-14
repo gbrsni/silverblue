@@ -65,9 +65,6 @@ dnf5 remove -y \
 dnf5 install -y \
 	akmod-nvidia \
 	xorg-x11-drv-nvidia-cuda \
-	libva-nvidia-driver \
-	libva-utils \
-	nvidia-vaapi-driver
 	# xorg-x11-drv-nvidia \
 	# xorg-x11-drv-nvidia-cuda \
 	# xorg-x11-drv-nvidia-cuda-libs
@@ -77,6 +74,11 @@ KERNEL_SUFFIX=""
 QUALIFIED_KERNEL="$(rpm -qa | grep -P 'kernel-(|'"$KERNEL_SUFFIX"'-)(\d+\.\d+\.\d+)' | sed -E 's/kernel-(|'"$KERNEL_SUFFIX"'-)//')"
 /usr/bin/dracut --no-hostonly --kver "$QUALIFIED_KERNEL" --reproducible -v --add ostree -f "/lib/modules/$QUALIFIED_KERNEL/initramfs.img"
 chmod 0600 "/lib/modules/$QUALIFIED_KERNEL/initramfs.img"
+
+dnf install -y \
+	libva-nvidia-driver \
+	libva-utils \
+	nvidia-vaapi-driver
 
 curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo | \
 	sudo tee /etc/yum.repos.d/nvidia-container-toolkit.repo
@@ -118,6 +120,7 @@ systemctl enable cockpit.socket
 systemctl enable libvirtd.service
 systemctl enable rpm-ostreed-automatic.timer
 sed -i 's/none/stage/g' /etc/rpm-ostreed.conf
+
 
 # tee /etc/systemd/system/rpm-ostreed-automatic.timer.d/override.conf << EOF
 # [Timer]
