@@ -64,10 +64,10 @@ dnf5 remove -y \
 # NVIDIA
 dnf5 install -y \
 	akmod-nvidia \
-	xorg-x11-drv-nvidia-cuda
-	# libva-nvidia-driver \
-	# libva-utils \
-	# nvidia-vaapi-driver \
+	xorg-x11-drv-nvidia-cuda \
+	libva-nvidia-driver \
+	libva-utils \
+	nvidia-vaapi-driver
 	# xorg-x11-drv-nvidia \
 	# xorg-x11-drv-nvidia-cuda \
 	# xorg-x11-drv-nvidia-cuda-libs
