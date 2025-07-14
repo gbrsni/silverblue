@@ -25,7 +25,6 @@ dnf5 install -y \
 	cockpit \
 	cockpit-machines \
 	distrobox \
-	ffmpeg \
 	ffmpegthumbnailer \
 	firewall-config \
 	gnome-shell-extension-appindicator \
@@ -53,6 +52,8 @@ dnf5 install -y \
 	virt-viewer \
 	wireguard-tools \
 	zsh
+
+dnf5 swap ffmpeg-free ffmpeg --allowerasing
 
 dnf5 remove -y \
 	gnome-software-rpm-ostree
