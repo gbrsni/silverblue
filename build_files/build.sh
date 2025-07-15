@@ -62,32 +62,26 @@ dnf5 remove -y \
 
 
 # # NVIDIA
-# dnf5 install -y \
-# 	akmod-nvidia \
-# 	xorg-x11-drv-nvidia-cuda \
-# 	# xorg-x11-drv-nvidia \
-# 	# xorg-x11-drv-nvidia-cuda \
-# 	# xorg-x11-drv-nvidia-cuda-libs
+dnf5 install -y \
+	akmod-nvidia \
+	xorg-x11-drv-nvidia \
+	xorg-x11-drv-nvidia-cuda
 
-# KERNEL_SUFFIX=""
+akmods --force --kernels `rpm -q --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-devel`
 
-# QUALIFIED_KERNEL="$(rpm -qa | grep -P 'kernel-(|'"$KERNEL_SUFFIX"'-)(\d+\.\d+\.\d+)' | sed -E 's/kernel-(|'"$KERNEL_SUFFIX"'-)//')"
-# /usr/bin/dracut --no-hostonly --kver "$QUALIFIED_KERNEL" --reproducible -v --add ostree -f "/lib/modules/$QUALIFIED_KERNEL/initramfs.img"
-# chmod 0600 "/lib/modules/$QUALIFIED_KERNEL/initramfs.img"
-
-# dnf install -y \
-# 	-x libva-nvidia-driver.i686 \
-# 	libva-nvidia-driver \
-# 	libva-utils \
-# 	nvidia-vaapi-driver
+dnf install -y \
+	-x libva-nvidia-driver.i686 \
+	libva-nvidia-driver \
+	libva-utils \
+	nvidia-vaapi-driver
 
 curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo | \
 	sudo tee /etc/yum.repos.d/nvidia-container-toolkit.repo
 
-# dnf5 install -y \
-# 	nvidia-container-toolkit
+dnf5 install -y \
+	nvidia-container-toolkit
 
-# nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml # TODO: Make this a service that runs on login
+nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml # TODO: Make this a service that runs on login
 
 
 # Docker
