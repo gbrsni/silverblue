@@ -19,6 +19,7 @@ FROM quay.io/fedora/fedora-silverblue:42
 ## the following RUN directive does all the things required to run "build.sh" as recommended.
 
 COPY docker.just /usr/share/custom-justfiles/docker.just
+COPY system_files/usr/lib/systemd/system/nvidia-toolkit-generate.service /usr/lib/systemd/system/nvidia-toolkit-generate.service
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
