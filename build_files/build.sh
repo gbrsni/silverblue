@@ -59,6 +59,7 @@ dnf5 remove -y \
 
 dnf5 config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-nvidia.repo
 
+mkdir /etc/nvidia
 echo "MODULE_VARIANT=kernel" | tee > /etc/nvidia/kernel.conf
 
 dnf5 install -y \
