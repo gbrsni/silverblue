@@ -52,18 +52,29 @@ dnf5 remove -y \
 
 
 # # NVIDIA
+# dnf5 install -y \
+# 	akmod-nvidia \
+# 	xorg-x11-drv-nvidia \
+# 	xorg-x11-drv-nvidia-cuda
+
+dnf5 config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-nvidia.repo
+
+echo "MODULE_VARIANT=kernel" >> /etc/nvidia/kernel.conf
+
 dnf5 install -y \
-	akmod-nvidia \
-	xorg-x11-drv-nvidia \
-	xorg-x11-drv-nvidia-cuda
+	nvidia-driver \
+	nvidia-settings \
+	nvidia-driver-cuda \
+	cuda-devel \
+	nvidia-driver-libs.i686
 
 akmods --force --kernels `rpm -q --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-devel`
 
-dnf install -y \
-	-x libva-nvidia-driver.i686 \
-	libva-nvidia-driver \
-	libva-utils \
-	nvidia-vaapi-driver
+# dnf install -y \
+# 	-x libva-nvidia-driver.i686 \
+# 	libva-nvidia-driver \
+# 	libva-utils \
+# 	nvidia-vaapi-driver
 
 curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo | \
 	sudo tee /etc/yum.repos.d/nvidia-container-toolkit.repo
