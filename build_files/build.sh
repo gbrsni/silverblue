@@ -65,7 +65,6 @@ dnf5 install -y \
 	nvidia-driver \
 	nvidia-settings \
 	nvidia-driver-cuda \
-	cuda-devel \
 	nvidia-driver-libs.i686
 
 sed -i -e 's/kernel-open$/kernel/g' /etc/nvidia/kernel.conf
