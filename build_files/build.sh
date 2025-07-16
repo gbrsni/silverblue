@@ -59,7 +59,7 @@ dnf5 remove -y \
 
 dnf5 config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-nvidia.repo
 
-echo "MODULE_VARIANT=kernel" >> /etc/nvidia/kernel.conf
+# echo "MODULE_VARIANT=kernel" >> /etc/nvidia/kernel.conf
 
 dnf5 install -y \
 	nvidia-driver \
@@ -67,6 +67,8 @@ dnf5 install -y \
 	nvidia-driver-cuda \
 	cuda-devel \
 	nvidia-driver-libs.i686
+
+sed -i -e 's/kernel-open$/kernel/g' /etc/nvidia/kernel.conf
 
 akmods --force --kernels `rpm -q --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-devel`
 
