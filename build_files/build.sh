@@ -85,6 +85,7 @@ dnf5 install -y \
 	nvidia-container-toolkit
 
 # nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml # TODO: Make this a service that runs on login
+systemctl enable nvidia-toolkit-generate.service
 
 NVIDIA_DASHED_VERSION=$(rpm -q --queryformat '%{VERSION}' xorg-x11-drv-nvidia | sed 's/\./-/g')
 flatpak install -y org.freedesktop.Platform.GL.nvidia-${NVIDIA_DASHED_VERSION} org.freedesktop.Platform.GL32.nvidia-${NVIDIA_DASHED_VERSION}
@@ -118,7 +119,7 @@ dnf5 install -y procps-ng curl file
 systemctl enable btrfs-balance.timer
 systemctl enable btrfs-scrub.timer
 systemctl enable cockpit.socket
-systemctl enable docker
+systemctl enable docker.service
 systemctl enable libvirtd.service
 systemctl enable rpm-ostreed-automatic.timer
 sed -i 's/none/stage/g' /etc/rpm-ostreed.conf
