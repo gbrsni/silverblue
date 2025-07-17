@@ -5,6 +5,9 @@ COPY build_files /
 # Base Image
 FROM quay.io/fedora/fedora-silverblue:42
 
+ARG NVIDIA="${NVIDIA:-0}"
+
+
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
 # FROM ghcr.io/ublue-os/bluefin-nvidia:stable
