@@ -51,7 +51,15 @@ dnf5 remove -y \
 	gnome-software-rpm-ostree
 
 
+# Add Flathub by default
+mkdir -p /etc/flatpak/remotes.d
+curl --retry 3 -o /etc/flatpak/remotes.d/flathub.flatpakrepo "https://dl.flathub.org/repo/flathub.flatpakrepo"
+
+
 # # NVIDIA
+mkdir -p /etc/rpm/
+echo "%_with_kmod_nvidia_open 0" > /etc/rpm/macros.nvidia-kmod
+
 dnf5 install -y \
 	akmod-nvidia \
 	xorg-x11-drv-nvidia \
