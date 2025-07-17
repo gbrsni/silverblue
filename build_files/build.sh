@@ -86,6 +86,9 @@ dnf5 install -y \
 
 # nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml # TODO: Make this a service that runs on login
 
+NVIDIA_DASHED_VERSION=$(rpm -q --queryformat '%{VERSION}' xorg-x11-drv-nvidia | sed 's/\./-/g')
+flatpak install -y org.freedesktop.Platform.GL.nvidia-${NVIDIA_DASHED_VERSION} org.freedesktop.Platform.GL32.nvidia-${NVIDIA_DASHED_VERSION}
+
 
 # Docker
 curl https://download.docker.com/linux/fedora/docker-ce.repo | tee > /etc/yum.repos.d/docker-ce.repo
