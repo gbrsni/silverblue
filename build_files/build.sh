@@ -95,8 +95,11 @@ if [ "$NVIDIA" == "1" ]; then
 	systemctl enable nvidia-toolkit-generate.service
 
 	NVIDIA_DASHED_VERSION=$(rpm -q --queryformat '%{VERSION}' xorg-x11-drv-nvidia | sed 's/\./-/g')
-	flatpak install -y org.freedesktop.Platform.GL.nvidia-${NVIDIA_DASHED_VERSION} org.freedesktop.Platform.GL32.nvidia-${NVIDIA_DASHED_VERSION}
+else
+	NVIDIA_DASHED_VERSION=$(dnf5 info xorg-x11-drv-nvidia | grep -i version | cut -c 19-| sed 's/\./-/g')
 fi
+
+flatpak install -y org.freedesktop.Platform.GL.nvidia-${NVIDIA_DASHED_VERSION} org.freedesktop.Platform.GL32.nvidia-${NVIDIA_DASHED_VERSION}
 
 
 # Docker
