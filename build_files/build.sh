@@ -127,6 +127,8 @@ dnf5 install -y procps-ng curl file
 
 
 # Services
+systemctl disable flatpak-add-fedora-repos.service
+
 systemctl enable btrfs-balance.timer
 systemctl enable btrfs-scrub.timer
 systemctl enable cockpit.socket
