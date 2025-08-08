@@ -3,13 +3,12 @@
 # It looks like the podman/CDI integration wants a pre-generated list of hardware
 Description=Generate /etc/cdi/nvidia.yaml
 # Ensure that we're set up before containers may run
-Before=graphical.target
+Before=multi-user.target
 
 [Service]
 Type=oneshot
-ExecStart=nvidia-ctk cdi generate
+ExecStart=nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
 RemainAfterExit=yes
-StandardOutput=file:/etc/cdi/nvidia.yaml
 
 [Install]
 WantedBy=basic.target
