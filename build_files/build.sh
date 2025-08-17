@@ -125,7 +125,6 @@ dnf -y --setopt=install_weak_deps=False install gcc
 dnf5 install -y procps-ng curl file
 
 
-
 # Services
 systemctl disable flatpak-add-fedora-repos.service
 
