@@ -15,6 +15,8 @@ dnf5 install -y \
 	cockpit \
 	cockpit-machines \
 	distrobox \
+ 	epson-inkjet-printer-escpr \
+  	epson-inkjet-printer-escpr2 \
 	ffmpegthumbnailer \
 	firewall-config \
 	gnome-shell-extension-appindicator \
