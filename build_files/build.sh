@@ -35,6 +35,7 @@ dnf5 install -y \
 	restic \
 	smartmontools \
 	steam-devices \
+ 	tailscale \
 	vdpauinfo \
 	virt-manager \
 	virt-viewer \
