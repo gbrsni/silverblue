@@ -17,6 +17,7 @@ dnf5 install -y \
 	distrobox \
 	ffmpegthumbnailer \
 	firewall-config \
+	freerdp \
 	gnome-shell-extension-appindicator \
 	gnome-shell-extension-blur-my-shell \
 	gnome-shell-extension-caffeine \
@@ -123,12 +124,6 @@ rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | tee /etc/yum.repos.d/vscode.repo > /dev/null
 
 dnf5 install -y code
-
-
-# WinBoat
-dnf5 install -y freerdp
-dnf5 install -y https://github.com/TibixDev/winboat/releases/download/v0.8.7/winboat-0.8.7-x86_64.rpm
-
 
 
 # Brew
