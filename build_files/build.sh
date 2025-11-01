@@ -125,6 +125,12 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 dnf5 install -y code
 
 
+# WinBoat
+dnf5 install -y freerdp
+dnf5 install -y https://github.com/TibixDev/winboat/releases/download/v0.8.7/winboat-0.8.7-x86_64.rpm
+
+
+
 # Brew
 dnf -y --setopt=install_weak_deps=False install gcc
 dnf5 install -y procps-ng curl file
