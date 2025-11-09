@@ -42,10 +42,6 @@ dnf5 install -y \
 	wireguard-tools \
 	zsh
 
-# Epson
-dnf5 install -y \
-	https://kojipkgs.fedoraproject.org//packages/epson-inkjet-printer-escpr/1.7.21/7.1lsb3.2.fc41/x86_64/epson-inkjet-printer-escpr-1.7.21-7.1lsb3.2.fc41.x86_64.rpm
-
 # Media
 dnf5 swap -y ffmpeg-free ffmpeg --allowerasing
 dnf5 group install -y multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
