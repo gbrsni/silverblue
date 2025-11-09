@@ -17,7 +17,6 @@ dnf5 install -y \
 	distrobox \
 	ffmpegthumbnailer \
 	firewall-config \
-	freerdp \
 	gnome-shell-extension-appindicator \
 	gnome-shell-extension-blur-my-shell \
 	gnome-shell-extension-caffeine \
