@@ -3,7 +3,7 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM quay.io/fedora/fedora-silverblue:42
+FROM quay.io/fedora-ostree-desktops/silverblue:42
 
 ARG NVIDIA="${NVIDIA:-0}"
 
