@@ -101,7 +101,9 @@ else
 	NVIDIA_DASHED_VERSION=$(dnf5 info xorg-x11-drv-nvidia | grep -i version | awk -F ': ' '{print $2}' | sed 's/\./-/g')
 fi
 
-flatpak install -y org.freedesktop.Platform.GL.nvidia-${NVIDIA_DASHED_VERSION} org.freedesktop.Platform.GL32.nvidia-${NVIDIA_DASHED_VERSION}
+wget https://negativo17.org/repos/fedora-nvidia-580.repo -O /etc/yum.repos.d/fedora-nvidia-580.repo
+
+# flatpak install -y org.freedesktop.Platform.GL.nvidia-${NVIDIA_DASHED_VERSION} org.freedesktop.Platform.GL32.nvidia-${NVIDIA_DASHED_VERSION}
 
 
 # Docker
