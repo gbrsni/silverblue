@@ -17,6 +17,7 @@ dnf5 install -y \
 	distrobox \
 	ffmpegthumbnailer \
 	firewall-config \
+	fish \
 	freerdp \
 	gnome-shell-extension-appindicator \
 	gnome-shell-extension-blur-my-shell \
