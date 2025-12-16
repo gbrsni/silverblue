@@ -59,52 +59,8 @@ mkdir -p /etc/flatpak/remotes.d
 curl --retry 3 -o /etc/flatpak/remotes.d/flathub.flatpakrepo "https://dl.flathub.org/repo/flathub.flatpakrepo"
 
 
-# NVIDIA
-if [ "$NVIDIA" == "1" ]; then
-	mkdir -p /etc/rpm/
-	echo "%_with_kmod_nvidia_open 0" > /etc/rpm/macros.nvidia-kmod
-
-	dnf5 install -y \
-		akmod-nvidia \
-		xorg-x11-drv-nvidia \
-		xorg-x11-drv-nvidia-cuda
-
-	# dnf5 config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-nvidia.repo
-
-	# mkdir /etc/nvidia
-	# echo "MODULE_VARIANT=kernel" | tee > /etc/nvidia/kernel.conf
-
-	# dnf5 install -y \
-	# 	nvidia-driver \
-	# 	nvidia-settings \
-	# 	nvidia-driver-cuda \
-	# 	nvidia-driver-libs.i686
-
-	akmods --force --rebuild --kernels `rpm -q --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-devel`
-
-	# dnf install -y \
-	# 	-x libva-nvidia-driver.i686 \
-	# 	libva-nvidia-driver \
-	# 	libva-utils \
-	# 	nvidia-vaapi-driver
-
-	curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo | \
-		sudo tee /etc/yum.repos.d/nvidia-container-toolkit.repo
-
-	dnf5 install -y \
-		nvidia-container-toolkit
-
-	# nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml # TODO: Make this a service that runs on login
-	systemctl enable nvidia-toolkit-generate.service
-
-	NVIDIA_DASHED_VERSION=$(rpm -q --queryformat '%{VERSION}' xorg-x11-drv-nvidia | sed 's/\./-/g')
-else
-	NVIDIA_DASHED_VERSION=$(dnf5 info xorg-x11-drv-nvidia | grep -i version | awk -F ': ' '{print $2}' | sed 's/\./-/g')
-fi
-
+# NVIDIA LTS repo
 wget https://negativo17.org/repos/fedora-nvidia-580.repo -O /etc/yum.repos.d/fedora-nvidia-580.repo
-
-# flatpak install -y org.freedesktop.Platform.GL.nvidia-${NVIDIA_DASHED_VERSION} org.freedesktop.Platform.GL32.nvidia-${NVIDIA_DASHED_VERSION}
 
 
 # Docker
