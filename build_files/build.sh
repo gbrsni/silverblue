@@ -44,6 +44,7 @@ dnf5 install -y \
 	wireguard-tools \
 	zsh
 
+
 # Media
 dnf5 swap -y ffmpeg-free ffmpeg --allowerasing
 dnf5 group install -y multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
