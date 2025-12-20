@@ -3,7 +3,7 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM quay.io/fedora-ostree-desktops/silverblue:43
+FROM quay.io/fedora-ostree-desktops/silverblue:42
 
 COPY docker.just /usr/share/custom-justfiles/docker.just
 COPY system_files/usr/lib/systemd/system/nvidia-toolkit-generate.service /usr/lib/systemd/system/nvidia-toolkit-generate.service
