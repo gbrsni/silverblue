@@ -16,7 +16,6 @@ dnf5 install -y \
 	rclone \
 	restic \
 	smartmontools \
-	vdpauinfo \
 	zsh
 
 
