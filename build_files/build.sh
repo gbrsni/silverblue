@@ -3,6 +3,22 @@
 set -ouex pipefail
 
 
+# Pin kernel version
+# Remove Existing Kernel
+for pkg in kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra; do
+	rpm --erase $pkg --nodeps
+done
+
+KERNEL_VERSION="6.17.11-200.fc42"
+dnf5 install -y \
+	kernel-${KERNEL_VERSION} \
+	kernel-devel-${KERNEL_VERSION} \
+	kernel-devel-matched-${KERNEL_VERSION} \
+	kernel-modules-extra-${KERNEL_VERSION} \
+	kernel-headers-6.17.4-200.fc42
+dnf5 versionlock add kernel kernel-devel kernel-devel-matched kernel-core kernel-modules kernel-modules-core kernel-modules-extra
+
+
 # RPMFusion
 dnf5 install -y \
 	https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
