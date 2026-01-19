@@ -3,17 +3,16 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM quay.io/fedora-ostree-desktops/silverblue:42
+FROM ghcr.io/ublue-os/bluefin-dx:stable
 
-COPY docker.just /usr/share/custom-justfiles/docker.just
-COPY system_files/usr/lib/systemd/system/nvidia-toolkit-generate.service /usr/lib/systemd/system/nvidia-toolkit-generate.service
+# COPY docker.just /usr/share/custom-justfiles/docker.just
+# COPY system_files/usr/lib/systemd/system/nvidia-toolkit-generate.service /usr/lib/systemd/system/nvidia-toolkit-generate.service
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    /ctx/build.sh && \
-    ostree container commit
+    /ctx/build.sh
 
 ### LINTING
 ## Verify final image and contents are correct.
