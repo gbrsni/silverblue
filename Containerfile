@@ -5,9 +5,6 @@ COPY build_files /
 # Base Image
 FROM ghcr.io/ublue-os/bluefin-dx:stable
 
-# COPY docker.just /usr/share/custom-justfiles/docker.just
-# COPY system_files/usr/lib/systemd/system/nvidia-toolkit-generate.service /usr/lib/systemd/system/nvidia-toolkit-generate.service
-
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
