@@ -52,7 +52,9 @@ dnf5 install -y rpmfusion-free-release-tainted
 dnf5 install -y libdvdcss
 
 dnf5 remove -y \
-	gnome-software-rpm-ostree
+	gnome-software-rpm-ostree \
+	firefox \
+	firefox-langpacks
 
 
 # Add Flathub by default
