@@ -87,10 +87,6 @@ mkdir -p /etc/flatpak/remotes.d
 curl --retry 3 -o /etc/flatpak/remotes.d/flathub.flatpakrepo "https://dl.flathub.org/repo/flathub.flatpakrepo"
 
 
-# NVIDIA LTS repo
-wget https://negativo17.org/repos/fedora-nvidia-580.repo -O /etc/yum.repos.d/fedora-nvidia-580.repo
-
-
 # Docker
 curl https://download.docker.com/linux/fedora/docker-ce.repo | tee > /etc/yum.repos.d/docker-ce.repo
 
