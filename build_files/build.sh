@@ -3,20 +3,29 @@
 set -ouex pipefail
 
 
-# # Pin kernel version
-# # Remove Existing Kernel
-# for pkg in kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra; do
-# 	rpm --erase $pkg --nodeps
-# done
+# Remove Existing Kernel
+for pkg in kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra; do
+	rpm --erase $pkg --nodeps
+done
 
-# KERNEL_VERSION="6.17.11-200.fc42"
-# dnf5 install -y \
-# 	kernel-${KERNEL_VERSION} \
-# 	kernel-devel-${KERNEL_VERSION} \
-# 	kernel-devel-matched-${KERNEL_VERSION} \
-# 	kernel-modules-extra-${KERNEL_VERSION} \
-# 	kernel-headers-6.17.4-200.fc42
-# dnf5 versionlock add kernel kernel-devel kernel-devel-matched kernel-core kernel-modules kernel-modules-core kernel-modules-extra
+# Fetch Common AKMODS & Kernel RPMS
+skopeo copy --retry-times 3 docker://ghcr.io/ublue-os/akmods:coreos-stable-"$(rpm -E %fedora)" dir:/tmp/akmods
+AKMODS_TARGZ=$(jq -r '.layers[].digest' </tmp/akmods/manifest.json | cut -d : -f 2)
+tar -xvzf /tmp/akmods/"$AKMODS_TARGZ" -C /tmp/
+mv /tmp/rpms/* /tmp/akmods/
+# NOTE: kernel-rpms should auto-extract into correct location
+
+# Install Kernel
+dnf5 -y install \
+	/tmp/kernel-rpms/kernel-[0-9]*.rpm \
+	/tmp/kernel-rpms/kernel-core-*.rpm \
+	/tmp/kernel-rpms/kernel-modules-*.rpm
+
+# TODO: Figure out why akmods cache is pulling in akmods/kernel-devel
+dnf5 -y install \
+	/tmp/kernel-rpms/kernel-devel-*.rpm
+
+dnf5 versionlock add kernel kernel-devel kernel-devel-matched kernel-core kernel-modules kernel-modules-core kernel-modules-extra
 
 
 # RPMFusion
