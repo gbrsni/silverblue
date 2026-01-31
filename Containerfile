@@ -6,7 +6,6 @@ COPY build_files /
 FROM quay.io/fedora-ostree-desktops/silverblue:42
 
 COPY docker.just /usr/share/custom-justfiles/docker.just
-COPY system_files/usr/lib/systemd/system/nvidia-toolkit-generate.service /usr/lib/systemd/system/nvidia-toolkit-generate.service
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
