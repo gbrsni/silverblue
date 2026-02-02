@@ -57,6 +57,7 @@ dnf5 install -y \
 	lshw \
 	nextcloud-client \
 	nvtop \
+	openrgb \
 	python3-ramalama \
 	rclone \
 	restic \
