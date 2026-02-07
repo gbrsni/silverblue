@@ -3,7 +3,7 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM quay.io/fedora-ostree-desktops/silverblue:42
+FROM quay.io/fedora-ostree-desktops/silverblue:43
 
 COPY docker.just /usr/share/custom-justfiles/docker.just
 
