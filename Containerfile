@@ -7,6 +7,7 @@ COPY build_files /
 # Base Image
 FROM quay.io/fedora-ostree-desktops/silverblue:${FEDORA_VERSION}
 
+ARG FEDORA_VERSION
 ARG KERNEL="6.17.12-300.fc43.x86_64"
 
 COPY docker.just /usr/share/custom-justfiles/docker.just
