@@ -11,7 +11,7 @@ ARG KERNEL="6.17.12-300.fc43.x86_64"
 
 COPY docker.just /usr/share/custom-justfiles/docker.just
 
-COPY --from=ghcr.io/ublue-os/akmods:coreos-stable-43-${KERNEL} / /tmp/akmods
+COPY --from=ghcr.io/ublue-os/akmods:coreos-stable-${FEDORA_VERSION}-${KERNEL} / /tmp/akmods
 RUN find /tmp/akmods
 ## optionally install remove old and install new kernel
 RUN dnf5 -y remove --no-autoremove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra
