@@ -36,6 +36,7 @@ dnf5 install -y \
 	python3-ramalama \
 	rclone \
 	restic \
+	rocm-smi \
 	smartmontools \
 	steam-devices \
 	tailscale \
