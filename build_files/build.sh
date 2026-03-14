@@ -37,6 +37,8 @@ dnf5 install -y \
 	python3-ramalama \
 	rclone \
 	restic \
+	rocm \
+	rocm-devel \
 	rocm-smi \
 	smartmontools \
 	steam-devices \
