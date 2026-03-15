@@ -47,9 +47,6 @@ dnf5 install -y \
 	wireguard-tools \
 	zsh
 
-# https://github.com/coreos/rpm-ostree/issues/5567
-dnf -y install rpm-ostree-2025.12-1.fc$(rpm -E %fedora)
-
 
 # Media
 dnf5 swap -y ffmpeg-free ffmpeg --allowerasing
