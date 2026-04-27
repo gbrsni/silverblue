@@ -54,10 +54,13 @@ dnf5 group install -y multimedia --setopt="install_weak_deps=False" --exclude=Pa
 dnf5 install -y rpmfusion-free-release-tainted
 dnf5 install -y libdvdcss
 
+
+# Cleanup unused stuff
 dnf5 remove -y \
 	gnome-software-rpm-ostree \
 	firefox \
-	firefox-langpacks
+	firefox-langpacks \
+	PackageKit
 
 
 # Add Flathub by default
