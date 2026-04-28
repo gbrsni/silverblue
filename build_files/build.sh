@@ -45,7 +45,8 @@ dnf5 install -y \
 	virt-manager \
 	virt-viewer \
 	wireguard-tools \
-	zsh
+	zsh \
+	--exclude cockpit-packagekit
 
 
 # Media
@@ -98,6 +99,7 @@ systemctl enable btrfs-balance.timer
 systemctl enable btrfs-scrub.timer
 systemctl enable cockpit.socket
 systemctl enable docker.service
+systemctl enable update-flatpaks.timer
 systemctl enable libvirtd.service
 systemctl enable rpm-ostreed-automatic.timer
 sed -i 's/none/stage/g' /etc/rpm-ostreed.conf

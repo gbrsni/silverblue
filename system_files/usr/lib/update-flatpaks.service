@@ -1,0 +1,13 @@
+[Unit]
+Description=Update flatpaks
+After=network-online.target
+ConditionACPower=true
+
+[Service]
+Type=oneshot
+Nice=19
+IOSchedulingClass=2 # Best effort
+IOSchedulingPriority=7 # Lowest priority in class
+ExecStart=/usr/bin/flatpak update -y
+Restart=on-failure
+RestartSec=60s
