@@ -18,6 +18,8 @@ RUN find /tmp/akmods
 RUN dnf5 -y remove --no-autoremove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra
 RUN dnf5 -y install /tmp/akmods/kernel-rpms/*.rpm
 
+COPY system_files/usr/lib/systemd/system/* /usr/lib/systemd/system/
+
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
