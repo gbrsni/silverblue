@@ -11,6 +11,7 @@ ARG FEDORA_VERSION
 # ARG KERNEL="6.17.12-300.fc43.x86_64"
 
 COPY docker.just /usr/share/custom-justfiles/docker.just
+COPY system_files/usr/lib/systemd/system/* /usr/lib/systemd/system/
 
 COPY --from=ghcr.io/ublue-os/akmods:coreos-stable-${FEDORA_VERSION} / /tmp/akmods
 RUN find /tmp/akmods
@@ -18,7 +19,6 @@ RUN find /tmp/akmods
 RUN dnf5 -y remove --no-autoremove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra
 RUN dnf5 -y install /tmp/akmods/kernel-rpms/*.rpm
 
-COPY system_files/usr/lib/systemd/system/* /usr/lib/systemd/system/
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
