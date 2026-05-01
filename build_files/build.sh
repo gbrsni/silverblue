@@ -58,6 +58,7 @@ dnf5 install -y libdvdcss
 
 # Cleanup unused stuff
 dnf5 remove -y \
+	gnome-software \
 	gnome-software-rpm-ostree \
 	firefox \
 	firefox-langpacks \
