@@ -25,7 +25,6 @@ dnf5 install -y \
 	libvirt \
 	libvirt-nss \
 	lshw \
-	mutter-devel \
 	nextcloud-client \
 	nvtop \
 	openrgb \
