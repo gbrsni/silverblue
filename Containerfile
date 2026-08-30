@@ -5,7 +5,7 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM quay.io/fedora-ostree-desktops/silverblue:${FEDORA_VERSION}
+FROM quay.io/fedora-ostree-desktops/cosmic-atomic:${FEDORA_VERSION}
 
 ARG FEDORA_VERSION
 # ARG KERNEL="6.17.12-300.fc43.x86_64"
