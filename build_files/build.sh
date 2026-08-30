@@ -19,11 +19,6 @@ dnf5 install -y \
 	firewall-config \
 	fish \
 	freerdp \
-	gnome-shell-extension-appindicator \
-	gnome-shell-extension-blur-my-shell \
-	gnome-shell-extension-caffeine \
-	gnome-shell-extension-gsconnect \
-	gnome-tweaks \
 	htop \
 	just \
 	langpacks-en_GB \
