@@ -12,6 +12,7 @@ dnf5 install -y \
 # Base
 dnf5 install -y \
 	btrfsmaintenance \
+	bubblewrap \
 	cockpit \
 	cockpit-machines \
 	distrobox \
@@ -37,8 +38,10 @@ dnf5 install -y \
 	python3-ramalama \
 	rclone \
 	restic \
+	ripgrep \
 	rocm-smi \
 	smartmontools \
+	socat \
 	steam-devices \
 	tailscale \
 	vdpauinfo \
